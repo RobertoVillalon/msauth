@@ -12,5 +12,12 @@ permissions:
   contents: write
 
 jobs:
-  deploy:
+  validation:
     uses: RobertoVillalon/infraestructura/.github/workflows/javaMsValidation.yml@main
+    with:
+      java-version: '21'
+      sonar-organization: robertovillalon
+      sonar-project-key: robertovillalon_msusuarios
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      INFRA_REPO_TOKEN: ${{ secrets.INFRA_REPO_TOKEN }}
