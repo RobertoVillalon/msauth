@@ -17,7 +17,7 @@ jobs:
     with:
       java-version: '21'
       sonar-organization: robertovillalon
-      sonar-project-key: robertovillalon_msusuarios
+      sonar-project-key: robertovillalon_msauth
+      ms-name: msauth
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      INFRA_REPO_TOKEN: ${{ secrets.INFRA_REPO_TOKEN }}
