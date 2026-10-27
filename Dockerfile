@@ -1,4 +1,7 @@
-FROM amazoncorretto:25-alpine3.21 AS build
+ARG BASE_IMAGE=amazoncorretto:25-alpine3.20
+ARG PORT
+
+FROM ${BASE_IMAGE} AS build
 
 RUN apk add --no-cache maven
 
@@ -10,12 +13,12 @@ RUN mvn -B dependency:go-offline
 COPY src ./src
 RUN mvn -B clean package -DskipTests
 
-FROM amazoncorretto:25-alpine3.21
+FROM ${BASE_IMAGE}
 
 WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
 
-EXPOSE 8002
+EXPOSE ${PORT}
 
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

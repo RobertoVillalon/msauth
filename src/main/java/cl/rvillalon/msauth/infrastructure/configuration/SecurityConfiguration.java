@@ -22,7 +22,6 @@ public class SecurityConfiguration {
             HttpSecurity http
     ) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(
                                 SessionCreationPolicy.STATELESS))
